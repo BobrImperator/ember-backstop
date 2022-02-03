@@ -6,14 +6,16 @@ module.exports = {
   aliases: ['backstop-approve'],
   availableOptions: [
     { name: 'filter', type: String, aliases: ['f'], default: ''},
-    { name: 'config', type: String, aliases: ['c'], default: './backstop.js' }
+    { name: 'config', type: String, aliases: ['c'], default: './backstop.js' },
+    { name: 'docker', type: Boolean, aliases: ['d'], default: false },
   ],
   description: 'Approve most-recent test bitmaps to reference. Use `--filter` to filter by filename (accepts regex string).',
   run(commandOptions) {
     process.chdir('./ember-backstop');
     return backstopjs('approve', {
       config: commandOptions.config, 
-      filter: commandOptions.filter
+      filter: commandOptions.filter,
+      docker: commandOptions.docker,
     });
   }
 };

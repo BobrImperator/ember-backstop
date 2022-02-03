@@ -9,12 +9,13 @@ module.exports = {
   availableOptions: [
     { name: 'filter', type: String, aliases: ['f'], default: '' },
     { name: 'config', type: String, aliases: ['c'], default: './backstop.js' },
+    { name: 'docker', type: Boolean, aliases: ['d'], default: false },
   ],
 
   description: 'Launch Backstop-Remote server.',
 
-  run({ config, filter }) {
+  run({ config, filter, docker }) {
     process.chdir('./ember-backstop');
-    return backstopjs('remote', { config, filter });
+    return backstopjs('remote', { config, filter, docker });
   },
 };
